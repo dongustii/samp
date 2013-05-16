@@ -1,0 +1,22 @@
+#frame{
+   width: 960px;
+   margin: 0px auto 0px auto;
+   border: 1px solid #686868;
+}
+
+#head{
+   height: 100px;
+   width: 100%;
+   background-color: #cecece;
+}
+
+#content{
+   min-heigt: 400px;
+   padding: 10px;
+}
+
+#footer{
+   height: 60px;
+   width: 100%;
+   background-color: #cecece;
+}

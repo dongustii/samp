@@ -167,16 +167,7 @@ class cikkszoveg {
 			<h1 class="list_head">'.$cikkcim.'</h1>
 			<div class="szovegblokk">
 			' . $cikkszoveg. '
-			<!-- Lockerz Share BEGIN -->
-<a class="a2a_dd" href="http://www.addtoany.com/share_save?linkurl=www.hegesztesportal.hu%2F%3Fc%3D'.$cikksorszam.'&amp;linkname=Hegeszt%C3%A9sport%C3%A1l"><img src="http://static.addtoany.com/buttons/share_save_171_16.png" width="171" height="16" border="0" alt="Share"/></a>
-<script type="text/javascript">
-var a2a_config = a2a_config || {};
-a2a_config.linkname = "Hegesztésportál";
-a2a_config.linkurl = "www.hegesztesportal.hu/?c='.$cikksorszam.'";
-a2a_config.num_services = 6;
-</script>
-<script type="text/javascript" src="http://static.addtoany.com/menu/page.js"></script>
-<!-- Lockerz Share END -->
+			
 			</div>';
 		}
 	}
