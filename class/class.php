@@ -67,6 +67,8 @@ class user{
 
 class admin{
 
+   public $menu;
+   
 	function login_admin(){
 
 		if ($_SESSION["sessfelhasznalojog"] == "1") {
@@ -76,21 +78,9 @@ class admin{
 
 			$admin_menuuj = new html_blokk;
 			$admin_menuuj->load_template_file("template/admin_menu.tpl",$array);
-			$admin_menu = $admin_menuuj->html_code;
+			$this->menu = $admin_menuuj->html_code;
 
-			//modul kiválasztása
-			if ($_REQUEST[tartalom]){
-				include('admin/'.$_REQUEST[tartalom].'.php');
-			} else {
-				include('admin/admin_cimlap.php');
-			}
 			
-			$admin_htmluj = new html_blokk;
-			$array = array('admin_torzs' => $admin_torzs,
-								'admin_menu' => $admin_menu);
-								
-			$admin_htmluj->load_template_file("template/admin.tpl",$array);
-			$this->html_code = $admin_htmluj->html_code;	
 			
 			}
 		else {
@@ -347,5 +337,46 @@ class navsav{
 		}
 		
 	}
+}
+
+class log_db {
+
+   function __construct(){
+      $sql = mysql_query("SHOW TABLES LIKE 'gps_ugyfelkapu_log'");
+      $value = mysql_fetch_row($sql);
+      if (!$value[0]) {$this->create_database();}
+   }
+   
+   function write($user, $message) {
+        $idopont = date("Y-m-d H:i:s");
+        $sql = "INSERT INTO ".$_SESSION[adatbazis_etag]."_log (idopont, user, uri, message, host, user_agent, ip)
+            VALUES ('$idopont', '$user', '$_SERVER[REQUEST_URI]', '$message', '$_SERVER[REMOTE_HOST]', '$_SERVER[HTTP_USER_AGENT]', '$_SERVER[REMOTE_ADDR]')";
+            mysql_query($sql);
+   }
+   
+   function create_database() {
+      $sql2 = "CREATE TABLE IF NOT EXISTS `".$_SESSION[adatbazis_etag]."_log` (
+            `sorszam` int(11) NOT NULL AUTO_INCREMENT,
+            `idopont` datetime DEFAULT NULL,
+            `user` int(11) DEFAULT NULL,
+            `uri` varchar(200) CHARACTER SET latin2 COLLATE latin2_hungarian_ci DEFAULT NULL,
+            `message` text CHARACTER SET latin2 COLLATE latin2_hungarian_ci,
+            `user_agent` varchar(150) CHARACTER SET latin2 COLLATE latin2_hungarian_ci DEFAULT NULL,
+            `host` varchar(150) CHARACTER SET latin2 COLLATE latin2_hungarian_ci DEFAULT NULL,
+            `ip` varchar(30) DEFAULT NULL,
+            PRIMARY KEY (`sorszam`)) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56;";
+      mysql_query($sql2);
+   }
+   
+   function admin_form(){
+      return '
+         <form method="post" action="" name="log" class="admin_form">
+            <div class="a_form_fej">Napló kezelése <input type="submit" value="OK" class="a_form_mentes" /></div>
+            <label>Szöveg:</label><input type="text" name="szoveg" />
+            <label>Felhasználó:</label><input type="text" name="felhasznalo" />
+            <label>Dátumtól:</label><input type="text" name="datumtol" />
+            <label>Dátumig:</label><input type="text" name="datumig" />
+         </form>';
+   }
 }
 ?>
