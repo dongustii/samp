@@ -4,7 +4,7 @@ $admin_konyvtar = "/adminx/";
 
 define("LOCALHOST_DB_NAME", "adminx");
 define("LOCALHOST_DB_USER", "root");
-define("LOCALHOST_DB_PASSWORD", "");
+define("LOCALHOST_DB_PASSWORD", "hallgato");
 
 define("DOMAIN_DB_NAME", "artcord_adminx");
 define("DOMAIN_DB_USER", "adminx_user");

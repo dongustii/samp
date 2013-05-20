@@ -1,0 +1,50 @@
+#cssmenu ul {
+list-style-type:none;
+width:auto;
+position:relative;
+display:block;
+height:33px;
+font-size:.6em;
+background:url(graphics/bg.png) repeat-x top left;
+font-family:Verdana,Helvetica,Arial,sans-serif;
+border:1px solid #000;
+margin:0;
+padding:0;
+}
+
+#cssmenu li {
+display:block;
+float:left;
+margin:0;
+padding:0;
+}
+
+#cssmenu li a {
+float:left;
+color:#A79787;
+text-decoration:none;
+height:24px;
+padding:9px 15px 0;
+font-weight:normal;
+}
+
+#cssmenu li a:hover,
+#cssmenu .active {
+color:#fff;
+background:url(graphics/bg.png) repeat-x top left;
+text-decoration:none;
+}
+
+#cssmenu .active a {
+color:#fff;
+font-weight:700;
+}
+
+
+#cssmenu ul{
+background-color:#629600;
+}
+#cssmenu li a:hover, 
+#cssmenu li.active {
+background-color:#7AB900;
+}
