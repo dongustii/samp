@@ -19,5 +19,15 @@
 #footer{
    height: 60px;
    width: 100%;
-   background-color: #cecece;
+   background-color: black;
+   text-align: center;
+   color: #5F9FE9;
+}
+a:link {color: #5F9FE9;
+
+}
+
+a:hover{color:white;
+        
+
 }
